@@ -1,6 +1,6 @@
 # これが「あるべき状態」の宣言。ArgoCDはこのファイルを正としてクラスタを合わせる。
 # pod を増やしたいときは、ここの replicas を変えて git push する（kubectl は使わない）。
-apiVersion: apps/v2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: argocd-demo:v1        # ← 自前ビルドのイメージ（Hello nginx入り）
+          image: argocd-demo:v2        # ← 自前ビルドのイメージ（Hello nginx入り）
           imagePullPolicy: IfNotPresent # k3dに取り込んだイメージを使う（外部から取りに行かない）
           ports:
             - containerPort: 80
