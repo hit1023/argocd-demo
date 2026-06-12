@@ -1,0 +1,23 @@
+# これが「あるべき状態」の宣言。ArgoCDはこのファイルを正としてクラスタを合わせる。
+# pod を増やしたいときは、ここの replicas を変えて git push する（kubectl は使わない）。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  replicas: 1          # ← ここを 2 にして push すると pod が 2 個になる
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80
