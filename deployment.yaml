@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:1.27-alpine
+          image: argocd-demo:v1        # ← 自前ビルドのイメージ（Hello nginx入り）
+          imagePullPolicy: IfNotPresent # k3dに取り込んだイメージを使う（外部から取りに行かない）
           ports:
             - containerPort: 80

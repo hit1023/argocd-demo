@@ -1,0 +1,11 @@
+# web Pod への入口（ネットワーク）。これでポートフォワードしてブラウザから見られる。
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  selector:
+    app: web        # app=web ラベルの Pod に転送する
+  ports:
+    - port: 80
+      targetPort: 80
