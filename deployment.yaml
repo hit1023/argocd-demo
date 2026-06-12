@@ -1,6 +1,6 @@
 # これが「あるべき状態」の宣言。ArgoCDはこのファイルを正としてクラスタを合わせる。
 # pod を増やしたいときは、ここの replicas を変えて git push する（kubectl は使わない）。
-apiVersion: apps/v1
+apiVersion: apps/v2
 kind: Deployment
 metadata:
   name: web
